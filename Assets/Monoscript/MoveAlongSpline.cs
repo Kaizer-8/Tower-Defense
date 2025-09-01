@@ -13,9 +13,9 @@ public class MoveAlongSpline : MonoBehaviour
     }
     private void Update()
     {
-        DistancePercentage += Speed * Time.deltaTime / SplineLength; // beweegt het object over de lengte van de spline
+        DistancePercentage += Speed * Time.deltaTime / SplineLength; // beweegt het object over de lengte van de spline.
 
-        Vector3 currentPosition = Spline.EvaluatePosition(DistancePercentage);
+        Vector3 currentPosition = Spline.EvaluatePosition(DistancePercentage);//checks where on the spline the object is.
         transform.position = currentPosition;
 
         if(DistancePercentage > 1f)
