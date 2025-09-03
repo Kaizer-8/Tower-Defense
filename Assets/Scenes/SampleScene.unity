@@ -750,7 +750,7 @@ MonoBehaviour:
   PlayerCamera: {fileID: 330585546}
   characterController: {fileID: 272501741}
   speed: 3
-  sensitivity: 3
+  sensitivity: 0.1
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
