@@ -19,7 +19,11 @@ public class TowerPlacement : MonoBehaviour
 
             if (Physics.Raycast(camray, out RaycastHit HitInfo, 100f))
             {
-
+                CurrentPlacingTower.transform.position = HitInfo.point;
+            }
+            if (Input.GetMouseButton(0))
+            {
+                CurrentPlacingTower = null;
             }
         }
     }
