@@ -5,7 +5,6 @@ public class TowerPlacement : MonoBehaviour
     private GameObject CurrentPlacingTower;
 
     [SerializeField] private Camera PlayerCamera;
- 
     void Start()
     {
         
@@ -16,14 +15,17 @@ public class TowerPlacement : MonoBehaviour
         if (CurrentPlacingTower != null)
         {
             Ray camray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(camray, out RaycastHit HitInfo, 100f))
+            RaycastHit HitInfo;
+            if (Physics.Raycast(camray, out HitInfo, 100f))
             {
                 CurrentPlacingTower.transform.position = HitInfo.point;
             }
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0) && HitInfo.collider.gameObject != null)
             {
-                CurrentPlacingTower = null;
+                if (!HitInfo.collider.gameObject.CompareTag("CannotPlace"))
+                {
+                    CurrentPlacingTower = null;
+                }
             }
         }
     }

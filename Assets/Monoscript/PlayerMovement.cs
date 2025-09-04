@@ -51,6 +51,5 @@ public class PlayerMovement : MonoBehaviour
             xRot -= PlayerMouseInput.y * sensitivity;
             transform.Rotate(0f, PlayerMouseInput.x * sensitivity, 0f);
             PlayerCamera.transform.localRotation = quaternion.Euler(xRot, 0f, 0f);
-        }
     }
 }
