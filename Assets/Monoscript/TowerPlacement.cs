@@ -24,6 +24,8 @@ public class TowerPlacement : MonoBehaviour
             {
                 if (!HitInfo.collider.gameObject.CompareTag("CannotPlace"))
                 {
+                    BoxCollider TowerCollider = CurrentPlacingTower.gameObject.GetComponent<BoxCollider>();
+                    //BoxCollider.Instantiate(CurrentPlacingTower.transform);
                     CurrentPlacingTower = null;
                 }
             }
@@ -31,6 +33,6 @@ public class TowerPlacement : MonoBehaviour
     }
     public void SetTowerToPlace(GameObject Tower)
     {
-        CurrentPlacingTower = Instantiate(Tower, Vector3.zero, Quaternion.identity);
+            CurrentPlacingTower = Instantiate(Tower, Vector3.zero, Quaternion.identity);
     }
 }

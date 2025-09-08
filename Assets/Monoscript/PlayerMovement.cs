@@ -9,13 +9,13 @@ public class PlayerMovement : MonoBehaviour
     private float xRot;
 
     [SerializeField] private Transform PlayerCamera;
-    [SerializeField] private CharacterController characterController; 
+    [SerializeField] private CharacterController characterController;
     [SerializeField] private float speed;
     [SerializeField] private float sensitivity;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -49,7 +49,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButton(1))
         {
             xRot -= PlayerMouseInput.y * sensitivity;
-            transform.Rotate(0f, PlayerMouseInput.x * sensitivity, 0f);
+            transform.Rotate(0f, PlayerMouseInput.x * sensitivity * 30f, 0f);
             PlayerCamera.transform.localRotation = quaternion.Euler(xRot, 0f, 0f);
+        }
     }
 }
