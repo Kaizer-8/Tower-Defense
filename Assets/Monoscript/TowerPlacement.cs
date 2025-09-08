@@ -5,10 +5,8 @@ public class TowerPlacement : MonoBehaviour
     private GameObject CurrentPlacingTower;
 
     [SerializeField] private Camera PlayerCamera;
-    void Start()
-    {
-        
-    }
+    [SerializeField] private LayerMask PlacementCheckMask;
+    [SerializeField] private LayerMask PlacementCollideMask;
 
     void Update()
     {
@@ -16,18 +14,30 @@ public class TowerPlacement : MonoBehaviour
         {
             Ray camray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit HitInfo;
-            if (Physics.Raycast(camray, out HitInfo, 100f))
+            if (Physics.Raycast(camray, out HitInfo, 100f, PlacementCheckMask) && HitInfo.collider.gameObject.tag != "CannotPlace")
             {
+                print(HitInfo.collider.gameObject.name);
                 CurrentPlacingTower.transform.position = HitInfo.point;
-            }
-            if (Input.GetMouseButton(0) && HitInfo.collider.gameObject != null)
-            {
-                if (!HitInfo.collider.gameObject.CompareTag("CannotPlace"))
+                if (Input.GetMouseButton(0) && HitInfo.collider.gameObject != null)
                 {
-                    BoxCollider TowerCollider = CurrentPlacingTower.gameObject.GetComponent<BoxCollider>();
-                    //BoxCollider.Instantiate(CurrentPlacingTower.transform);
-                    CurrentPlacingTower = null;
+                    if (!HitInfo.collider.gameObject.CompareTag("CannotPlace"))
+                    {
+                        BoxCollider TowerCollider = CurrentPlacingTower.gameObject.GetComponent<BoxCollider>();
+                        TowerCollider.isTrigger = true;
+
+                        Vector3 BoxCenter = CurrentPlacingTower.gameObject.transform.position + TowerCollider.center;
+                        Vector3 HalfExtents = TowerCollider.size / 2;
+                        if (Physics.CheckBox(BoxCenter, HalfExtents, Quaternion.identity, PlacementCheckMask, QueryTriggerInteraction.Ignore))
+                        {
+                            TowerCollider.isTrigger = false;
+                            CurrentPlacingTower = null;
+                        }
+                    }
                 }
+            }
+            else
+            {
+                CurrentPlacingTower.transform.position = new Vector3(0, 0, -1000);
             }
         }
     }
