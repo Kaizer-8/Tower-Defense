@@ -16,7 +16,6 @@ public class TowerPlacement : MonoBehaviour
             RaycastHit HitInfo;
             if (Physics.Raycast(camray, out HitInfo, 100f, PlacementCheckMask) && HitInfo.collider.gameObject.tag != "CannotPlace")
             {
-                print(HitInfo.collider.gameObject.name);
                 CurrentPlacingTower.transform.position = HitInfo.point;
                 if (Input.GetMouseButton(0) && HitInfo.collider.gameObject != null)
                 {
