@@ -12,13 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private CharacterController characterController;
     [SerializeField] private float speed;
     [SerializeField] private float sensitivity;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
         PlayerMovementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
