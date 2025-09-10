@@ -7,12 +7,17 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private Camera PlayerCamera;
     [SerializeField] private LayerMask PlacementCheckMask;
     [SerializeField] private LayerMask PlacementCollideMask;
+    Inputmanager InputManager;
 
+    private void Start()
+    {
+       InputManager = Inputmanager.Instance;
+    }
     void Update()
     {
         if (CurrentPlacingTower != null)
         {
-            Ray camray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+            Ray camray = PlayerCamera.ScreenPointToRay(InputManager.GetmousePosition());
             RaycastHit HitInfo;
             if (Physics.Raycast(camray, out HitInfo, 100f, PlacementCheckMask) && HitInfo.collider.gameObject.tag != "CannotPlace")
             {
