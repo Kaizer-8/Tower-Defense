@@ -50,4 +50,3 @@ public class TowerPlacement : MonoBehaviour
             CurrentPlacingTower = Instantiate(Tower, Vector3.zero, Quaternion.identity);
     }
 }
-//&& HitInfo.collider.gameObject != null
