@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - CannotPlace
+  - Enemy
   layers:
   - Default
   - TransparentFX
