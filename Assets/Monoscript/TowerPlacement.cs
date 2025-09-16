@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
@@ -8,6 +10,7 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private LayerMask PlacementCheckMask;
     [SerializeField] private LayerMask PlacementCollideMask;
     Inputmanager InputManager;
+    private bool RemoveTowers;
 
     private void Start()
     {
@@ -15,16 +18,14 @@ public class TowerPlacement : MonoBehaviour
     }
     void Update()
     {
-        if (CurrentPlacingTower != null)
-        {
             Ray camray = PlayerCamera.ScreenPointToRay(InputManager.GetmousePosition());
             RaycastHit HitInfo;
-            if (Physics.Raycast(camray, out HitInfo, 100f, PlacementCheckMask) && HitInfo.collider.gameObject.tag != "CannotPlace")
+            if (Physics.Raycast(camray, out HitInfo, 100f, PlacementCheckMask))
             {
-                CurrentPlacingTower.transform.position = HitInfo.point;
-                if (Input.GetMouseButton(0) && HitInfo.collider.gameObject != null)
+                if (CurrentPlacingTower != null && HitInfo.collider.gameObject.tag != "CannotPlace" && HitInfo.collider.gameObject.tag != "Tower")
                 {
-                    if (!HitInfo.collider.gameObject.CompareTag("CannotPlace"))
+                    CurrentPlacingTower.transform.position = HitInfo.point;
+                    if (!HitInfo.collider.gameObject.CompareTag("CannotPlace") && !HitInfo.collider.gameObject.CompareTag("Tower") && Input.GetMouseButton(0))
                     {
                         BoxCollider TowerCollider = CurrentPlacingTower.gameObject.GetComponent<BoxCollider>();
                         TowerCollider.isTrigger = true;
@@ -36,17 +37,34 @@ public class TowerPlacement : MonoBehaviour
                             TowerCollider.isTrigger = false;
                             CurrentPlacingTower = null;
                         }
-                    }
                 }
             }
-            else
+                else if(CurrentPlacingTower != null)
+                {
+                     CurrentPlacingTower.transform.position = new Vector3(0, 0, -1000);
+                }
+
+            if (CurrentPlacingTower == null && RemoveTowers && HitInfo.transform.CompareTag("Tower"))
             {
-                CurrentPlacingTower.transform.position = new Vector3(0, 0, -1000);
+                if (Input.GetMouseButton(0))
+                {
+                    Destroy(HitInfo.collider.gameObject);
+                }
             }
-        }
+         }
     }
+    
     public void SetTowerToPlace(GameObject Tower)
     {
             CurrentPlacingTower = Instantiate(Tower, Vector3.zero, Quaternion.identity);
+    }
+    public void RemoveTower()
+    {
+        RemoveTowers = !RemoveTowers;
+        CurrentPlacingTower = null;
+    }
+    public void SwitchRemoveMode()
+    {
+        RemoveTowers = false;
     }
 }
