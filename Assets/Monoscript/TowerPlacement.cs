@@ -22,11 +22,10 @@ public class TowerPlacement : MonoBehaviour
             RaycastHit HitInfo;
             if (Physics.Raycast(camray, out HitInfo, 100f, PlacementCheckMask))
             {
-
-                if (CurrentPlacingTower != null && HitInfo.collider.gameObject.tag != "CannotPlace")
+                if (CurrentPlacingTower != null && HitInfo.collider.gameObject.tag != "CannotPlace" && HitInfo.collider.gameObject.tag != "Tower")
                 {
                     CurrentPlacingTower.transform.position = HitInfo.point;
-                    if (!HitInfo.collider.gameObject.CompareTag("CannotPlace") && Input.GetMouseButton(0))
+                    if (!HitInfo.collider.gameObject.CompareTag("CannotPlace") && !HitInfo.collider.gameObject.CompareTag("Tower") && Input.GetMouseButton(0))
                     {
                         BoxCollider TowerCollider = CurrentPlacingTower.gameObject.GetComponent<BoxCollider>();
                         TowerCollider.isTrigger = true;
@@ -45,27 +44,27 @@ public class TowerPlacement : MonoBehaviour
                      CurrentPlacingTower.transform.position = new Vector3(0, 0, -1000);
                 }
 
-                if(CurrentPlacingTower == null && RemoveTowers && CompareTag("CannotPlace"))
+            if (CurrentPlacingTower == null && RemoveTowers && HitInfo.transform.CompareTag("Tower"))
+            {
+                if (Input.GetMouseButton(0))
                 {
                     Destroy(HitInfo.collider.gameObject);
                 }
-                else
-            {
-                RemoveTowers = false;
             }
-
-            }
+         }
     }
     
-
-
     public void SetTowerToPlace(GameObject Tower)
     {
             CurrentPlacingTower = Instantiate(Tower, Vector3.zero, Quaternion.identity);
     }
     public void RemoveTower()
     {
-        RemoveTowers = true;
+        RemoveTowers = !RemoveTowers;
         CurrentPlacingTower = null;
+    }
+    public void SwitchRemoveMode()
+    {
+        RemoveTowers = false;
     }
 }

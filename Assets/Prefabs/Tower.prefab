@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7618921933555584740}
   - component: {fileID: 1506073200278839133}
   - component: {fileID: -3650654266417789299}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tower
-  m_TagString: CannotPlace
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,8 +107,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5, y: 3, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
+  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!114 &-3650654266417789299
 MonoBehaviour:
   m_ObjectHideFlags: 0
