@@ -1180,6 +1180,73 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5341690157068145972, guid: 50556f5cd9b3ba6468f7872861db000e, type: 3}
   m_PrefabInstance: {fileID: 4989565781519979366}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &508687788 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5641540046384059908, guid: 50556f5cd9b3ba6468f7872861db000e, type: 3}
+  m_PrefabInstance: {fileID: 4989565781519979366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &524837441
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5145926423542884649, guid: 73fa1cd72855a1c4596fff0e239d7628, type: 3}
+      propertyPath: m_Name
+      value: Projectile 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554269685822809788, guid: 73fa1cd72855a1c4596fff0e239d7628, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 63.449196
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554269685822809788, guid: 73fa1cd72855a1c4596fff0e239d7628, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4999981
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554269685822809788, guid: 73fa1cd72855a1c4596fff0e239d7628, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.625813
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554269685822809788, guid: 73fa1cd72855a1c4596fff0e239d7628, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554269685822809788, guid: 73fa1cd72855a1c4596fff0e239d7628, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554269685822809788, guid: 73fa1cd72855a1c4596fff0e239d7628, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554269685822809788, guid: 73fa1cd72855a1c4596fff0e239d7628, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554269685822809788, guid: 73fa1cd72855a1c4596fff0e239d7628, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554269685822809788, guid: 73fa1cd72855a1c4596fff0e239d7628, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554269685822809788, guid: 73fa1cd72855a1c4596fff0e239d7628, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73fa1cd72855a1c4596fff0e239d7628, type: 3}
+--- !u!1 &524837442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5145926423542884649, guid: 73fa1cd72855a1c4596fff0e239d7628, type: 3}
+  m_PrefabInstance: {fileID: 524837441}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &566418058
 GameObject:
   m_ObjectHideFlags: 0
@@ -2113,7 +2180,7 @@ GameObject:
   - component: {fileID: 1256241716}
   m_Layer: 0
   m_Name: TempEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3104,6 +3171,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3650654266417789299, guid: 50556f5cd9b3ba6468f7872861db000e, type: 3}
+      propertyPath: Tower
+      value: 
+      objectReference: {fileID: 508687788}
+    - target: {fileID: -3650654266417789299, guid: 50556f5cd9b3ba6468f7872861db000e, type: 3}
+      propertyPath: range
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -3650654266417789299, guid: 50556f5cd9b3ba6468f7872861db000e, type: 3}
+      propertyPath: Projectile
+      value: 
+      objectReference: {fileID: 524837442}
     - target: {fileID: 5341690157068145972, guid: 50556f5cd9b3ba6468f7872861db000e, type: 3}
       propertyPath: m_Name
       value: Tower
@@ -3226,6 +3305,7 @@ SceneRoots:
   - {fileID: 4989565781519979366}
   - {fileID: 8983343346334377588}
   - {fileID: 2607449930676784053}
+  - {fileID: 524837441}
   - {fileID: 1425563772}
   - {fileID: 272501739}
   - {fileID: 10238351}
