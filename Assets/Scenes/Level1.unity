@@ -647,7 +647,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.35
+  m_fontSize: 25.2
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1199,7 +1199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6554269685822809788, guid: 73fa1cd72855a1c4596fff0e239d7628, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 63.449196
+      value: 163.3
       objectReference: {fileID: 0}
     - target: {fileID: 6554269685822809788, guid: 73fa1cd72855a1c4596fff0e239d7628, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2178,6 +2178,7 @@ GameObject:
   - component: {fileID: 1256241713}
   - component: {fileID: 1256241712}
   - component: {fileID: 1256241716}
+  - component: {fileID: 1256241717}
   m_Layer: 0
   m_Name: TempEnemy
   m_TagString: Enemy
@@ -2288,6 +2289,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Spline: {fileID: 137966535}
   Speed: 10
+--- !u!114 &1256241717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256241711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc111d37ec88144c95573e56cbb24aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
 --- !u!1 &1364063663
 GameObject:
   m_ObjectHideFlags: 0
@@ -3189,7 +3203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5641540046384059908, guid: 50556f5cd9b3ba6468f7872861db000e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59.3
+      value: 193.1
       objectReference: {fileID: 0}
     - target: {fileID: 5641540046384059908, guid: 50556f5cd9b3ba6468f7872861db000e, type: 3}
       propertyPath: m_LocalPosition.y
