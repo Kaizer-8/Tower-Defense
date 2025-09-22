@@ -9,6 +9,7 @@ public class TowerProjectile : MonoBehaviour
     float radiusSq;
     Transform Enemy1;
 
+
     void OnEnable()
     {
         radiusSq = radius * radius;
@@ -23,11 +24,17 @@ public class TowerProjectile : MonoBehaviour
 
         Vector3 direction = Enemy1.position - transform.position;
         transform.position += direction.normalized * speed * Time.deltaTime;
-
         if (direction.sqrMagnitude < radiusSq)
         {
-            Destroy(gameObject);
+            EnemyHealth enemyHealth = Enemy1.GetComponent<EnemyHealth>();
+            if (enemyHealth)
+            {
+                enemyHealth.TakeDamage(1); //deals one damage, will be different depending on the towers. again, later lol
+            }
+
+            Destroy(gameObject); 
         }
+
     }
 
     public void SetTarget(Transform target)
