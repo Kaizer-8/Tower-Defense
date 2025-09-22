@@ -18,15 +18,18 @@ public class TowerPlacement : MonoBehaviour
     }
     void Update()
     {
-            Ray camray = PlayerCamera.ScreenPointToRay(InputManager.GetmousePosition());
-            RaycastHit HitInfo;
-            if (Physics.Raycast(camray, out HitInfo, 100f, PlacementCheckMask))
+        Ray camray = PlayerCamera.ScreenPointToRay(InputManager.GetmousePosition());
+        RaycastHit HitInfo;
+        if (Physics.Raycast(camray, out HitInfo, 100f, PlacementCheckMask))
+        {
+            if (UIchanger.instance.TowerEnoughCash() == true)
             {
                 if (CurrentPlacingTower != null && HitInfo.collider.gameObject.tag != "CannotPlace" && HitInfo.collider.gameObject.tag != "Tower")
                 {
                     CurrentPlacingTower.transform.position = HitInfo.point;
                     if (!HitInfo.collider.gameObject.CompareTag("CannotPlace") && !HitInfo.collider.gameObject.CompareTag("Tower") && Input.GetMouseButton(0))
                     {
+                        UIchanger.instance.TowerPlaceCost();
                         BoxCollider TowerCollider = CurrentPlacingTower.gameObject.GetComponent<BoxCollider>();
                         TowerCollider.isTrigger = true;
 
@@ -37,22 +40,25 @@ public class TowerPlacement : MonoBehaviour
                             TowerCollider.isTrigger = false;
                             CurrentPlacingTower = null;
                         }
-                }
-            }
-                else if(CurrentPlacingTower != null)
-                {
-                     CurrentPlacingTower.transform.position = new Vector3(0, 0, -1000);
+                    }
                 }
 
-            if (CurrentPlacingTower == null && RemoveTowers && HitInfo.transform.CompareTag("Tower"))
-            {
-                if (Input.GetMouseButton(0))
+                else if (CurrentPlacingTower != null)
                 {
-                    Destroy(HitInfo.collider.gameObject);
+                    CurrentPlacingTower.transform.position = new Vector3(0, 0, -1000);
                 }
             }
-         }
-    }
+                if (CurrentPlacingTower == null && RemoveTowers && HitInfo.transform.CompareTag("Tower"))
+                {
+                    if (Input.GetMouseButton(0))
+                    {
+                        UIchanger.instance.SellingTowerCashBack();
+                        Destroy(HitInfo.collider.gameObject);
+                    }
+                }
+            }
+        }
+    
     
     public void SetTowerToPlace(GameObject Tower)
     {
