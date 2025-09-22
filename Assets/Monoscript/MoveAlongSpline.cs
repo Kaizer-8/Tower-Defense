@@ -17,7 +17,6 @@ public class MoveAlongSpline : MonoBehaviour
 
         Vector3 currentPosition = Spline.EvaluatePosition(DistancePercentage);//checks where on the spline the object is.
         transform.position = currentPosition;
-        Debug.Log(DistancePercentage);
         if(DistancePercentage > 1f)
         {
             UIchanger.instance.AddLives();
