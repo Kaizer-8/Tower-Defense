@@ -1,10 +1,8 @@
 using UnityEngine;
-
 public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth = 3; //amount of HP, will adjoust for different enemies. for now, this works (hopefully lol)
     private int currentHealth;
-
     void Start()
     {
         currentHealth = maxHealth;
@@ -23,6 +21,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
+        UIchanger.instance.AddMoney();
         Debug.Log($"{gameObject.name} has been destroyed!");
         Destroy(gameObject);
     }

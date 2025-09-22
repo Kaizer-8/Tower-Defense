@@ -13,6 +13,7 @@ public class MoveAlongSpline : MonoBehaviour
     }
     private void Update()
     {
+        DecreasingLives();
         DistancePercentage += Speed * Time.deltaTime / SplineLength; // beweegt het object over de lengte van de spline.
 
         Vector3 currentPosition = Spline.EvaluatePosition(DistancePercentage);//checks where on the spline the object is.
@@ -25,5 +26,12 @@ public class MoveAlongSpline : MonoBehaviour
         Vector3 Nextposition = Spline.EvaluatePosition(DistancePercentage + 0.05f);
         Vector3 Direction = Nextposition - currentPosition;
         transform.rotation = Quaternion.LookRotation(Direction, transform.up);
+    }
+    private void DecreasingLives()
+    {
+        if (DistancePercentage == 100)
+        {
+            //lives -- in unity events.
+        }
     }
 }
