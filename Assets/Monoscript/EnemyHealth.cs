@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int maxHealth = 3;   // number of hits before death
+    public int maxHealth = 3; //amount of HP, will adjoust for different enemies. for now, this works (hopefully lol)
     private int currentHealth;
 
     void Start()
