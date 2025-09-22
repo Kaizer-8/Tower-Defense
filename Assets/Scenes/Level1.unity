@@ -384,11 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Container: {fileID: 137966535}
-  m_ItemsToInstantiate:
-  - prefab: {fileID: 0}
-    Prefab: {fileID: 1256241711}
-    probability: 0
-    Probability: 0
+  m_ItemsToInstantiate: []
   m_Method: 0
   m_Space: 0
   m_Spacing: {x: 1, y: 1}
