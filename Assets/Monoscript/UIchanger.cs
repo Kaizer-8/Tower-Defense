@@ -1,9 +1,12 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 public class UIchanger : MonoBehaviour
 {
-    public static UIchanger instance;  
+    public static UIchanger instance;
+    [SerializeField]GameObject GameOverScreen;
 
     public TMP_Text MoneyText;
     public TMP_Text LivesText;
@@ -24,10 +27,17 @@ public class UIchanger : MonoBehaviour
         Money += 50;
         MoneyText.text = Money.ToString() + "Money";
     }
-    public void AddLives()
+    public async void AddLives()
     {
         Lives -= 1;
         LivesText.text = Lives.ToString() + "Lives";
+        if (Lives == 0)
+        {
+            GameOverScreen.GetComponent<Canvas>().enabled = true;
+            Debug.Log("Game Over");
+            await Task.Delay(3000);
+            SceneManager.LoadScene("Main menu");
+        }
     }
     public void TowerPlaceCost()
     {

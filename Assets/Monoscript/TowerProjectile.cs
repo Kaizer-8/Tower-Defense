@@ -53,4 +53,12 @@ public class TowerProjectile : MonoBehaviour
 
         return p;
     }
+    public void RadiusUpgrade()
+    {
+        radius++;
+    }
+    public void DamageUpgrade()
+    {
+        
+    }
 }
