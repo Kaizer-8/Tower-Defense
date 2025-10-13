@@ -1,5 +1,6 @@
 using System;
 using Unity.VisualScripting;
+using UnityEditor.Timeline;
 using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
@@ -9,6 +10,8 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private Camera PlayerCamera;
     [SerializeField] private LayerMask PlacementCheckMask;
     [SerializeField] private LayerMask PlacementCollideMask;
+    [SerializeField] GameObject DmgButton;
+    [SerializeField] GameObject RangeButton;
     Inputmanager InputManager;
     private bool RemoveTowers;
 
@@ -48,21 +51,32 @@ public class TowerPlacement : MonoBehaviour
                     CurrentPlacingTower.transform.position = new Vector3(0, 0, -1000);
                 }
             }
-                if (CurrentPlacingTower == null && RemoveTowers && HitInfo.transform.CompareTag("Tower"))
+            if (CurrentPlacingTower == null && RemoveTowers && HitInfo.transform.CompareTag("Tower"))
+            {
+                if (Input.GetMouseButton(0))
                 {
-                    if (Input.GetMouseButton(0))
-                    {
-                        UIchanger.instance.SellingTowerCashBack();
-                        Destroy(HitInfo.collider.gameObject);
-                    }
+                    UIchanger.instance.SellingTowerCashBack();
+                    Destroy(HitInfo.collider.gameObject);
+                }
+            }
+            else if (CurrentPlacingTower == null && HitInfo.transform.CompareTag("Tower"))
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    DmgButton.SetActive(!DmgButton.activeSelf);
+                    DmgButton.GetComponent<Towerupgrade>().CurrentUpgradeTower(HitInfo.transform.gameObject.GetComponent<TowerBehavior>());
+                    RangeButton.SetActive(!RangeButton.activeSelf);
+                    RangeButton.GetComponent<Towerupgrade>().CurrentUpgradeTower(HitInfo.transform.gameObject.GetComponent<TowerBehavior>());
                 }
             }
         }
-    
-    
+    }
+
     public void SetTowerToPlace(GameObject Tower)
     {
+        if (UIchanger.instance.TowerEnoughCash() == true) {
             CurrentPlacingTower = Instantiate(Tower, Vector3.zero, Quaternion.identity);
+        }
     }
     public void RemoveTower()
     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class TowerBehavior : MonoBehaviour
@@ -25,12 +26,14 @@ public class TowerBehavior : MonoBehaviour
 
     public void TowerUpgrade(int damageAmountForUpgrade)
     {
-        towerDamage += damageAmountForUpgrade;
+         towerDamage += damageAmountForUpgrade;
     }
-
-
-    Transform FindClosestEnemy()
+    public void RangeUpgrade(int RangeAmountForUpgrade)
     {
+        range += RangeAmountForUpgrade;
+    }
+        Transform FindClosestEnemy()
+        {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         Transform closest = null;
         float minDist = Mathf.Infinity;
