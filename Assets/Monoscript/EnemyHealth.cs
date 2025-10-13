@@ -1,8 +1,9 @@
 using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
-    public int maxHealth = 3; //amount of HP, will adjoust for different enemies. for now, this works (hopefully lol)
     private int currentHealth;
+    [SerializeField] public int maxHealth;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -10,7 +11,8 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        currentHealth -= amount;
+       // amount = 2;
+        currentHealth -= amount;// min comparatage the tower dmg
         Debug.Log($"{gameObject.name} took {amount} damage, health = {currentHealth}");
 
         if (currentHealth <= 0)
@@ -25,6 +27,5 @@ public class EnemyHealth : MonoBehaviour
         Debug.Log($"{gameObject.name} has been destroyed!");
         Destroy(gameObject);
     }
-
 }
 
