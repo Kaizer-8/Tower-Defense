@@ -6,9 +6,9 @@ public class TowerBehavior : MonoBehaviour
 {
     public GameObject Projectile;
     public Transform Tower;
-    public float fireRate = 1f; 
+    public float fireRate = 1f;
     public float range = 5f;
-
+    public int towerDamage;
     private float fireCooldown;
 
     void Update()
@@ -18,10 +18,16 @@ public class TowerBehavior : MonoBehaviour
 
         if (target && fireCooldown <= 0f)
         {
-            TowerProjectile.Spawn(Projectile, Tower.position, Quaternion.identity, target);
-            fireCooldown = 1f / fireRate;
+          TowerProjectile.Spawn(Projectile, Tower.position, Quaternion.identity, target, towerDamage);
+          fireCooldown = 1f / fireRate;
         }
     }
+
+    public void TowerUpgrade(int damageAmountForUpgrade)
+    {
+        towerDamage += damageAmountForUpgrade;
+    }
+
 
     Transform FindClosestEnemy()
     {
