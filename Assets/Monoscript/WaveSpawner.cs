@@ -2,7 +2,7 @@
 using TMPro; // For UI text
 using UnityEngine;
 using UnityEngine.UI; // For the button
-using UnityEngine.Splines;
+using UnityEngine.Splines; // Needed for SplineContainer
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -75,7 +75,8 @@ public class WaveSpawner : MonoBehaviour
         waitingForNextWave = false;
         startWaveButton.interactable = false;
 
-        waveInfoText.text = $"🌊 Spawning Wave: {wave.waveName}";
+        // Show current wave number
+        waveInfoText.text = $"Wave {currentWaveIndex + 1}";
 
         for (int i = 0; i < wave.enemyCount; i++)
         {
@@ -88,14 +89,8 @@ public class WaveSpawner : MonoBehaviour
 
         if (currentWaveIndex < waves.Length)
         {
-            waveInfoText.text = $"Wave complete! Prepare for next...";
             countdown = timeBetweenWaves;
             waitingForNextWave = true;
-        }
-        else
-        {
-            waveInfoText.text = "🏁 All waves complete!";
-            countdownText.text = "";
         }
 
         UpdateUI();
@@ -118,13 +113,8 @@ public class WaveSpawner : MonoBehaviour
     {
         if (currentWaveIndex < waves.Length)
         {
-            waveInfoText.text = $"Next: {waves[currentWaveIndex].waveName}";
+            waveInfoText.text = $"Wave {currentWaveIndex + 1}";
             startWaveButton.interactable = !spawningWave && countdown <= 0f;
-        }
-        else
-        {
-            waveInfoText.text = "🏁 All waves done!";
-            startWaveButton.interactable = false;
         }
     }
 }
