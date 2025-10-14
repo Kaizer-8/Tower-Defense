@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Projectile: {fileID: 0}
-  Tower: {fileID: 0}
+  Tower: {fileID: 1415415710456387472}
   fireRate: 1
-  range: 5
+  range: 20
+  towerDamage: 3

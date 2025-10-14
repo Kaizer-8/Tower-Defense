@@ -45,6 +45,7 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
+        WinningCondition();
         if (!waitingForNextWave || spawningWave)
             return;
 
@@ -115,6 +116,13 @@ public class WaveSpawner : MonoBehaviour
         {
             waveInfoText.text = $"Wave {currentWaveIndex + 1}";
             startWaveButton.interactable = !spawningWave && countdown <= 0f;
+        }
+    }
+    void WinningCondition()
+    {
+        if (currentWaveIndex == 5)
+        {
+            Debug.Log("You won!");
         }
     }
 }
