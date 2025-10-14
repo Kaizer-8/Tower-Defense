@@ -4,7 +4,6 @@ public class MainMenu : MonoBehaviour
 {
     public void Level1()
     {
-        Debug.Log("hallo");
         SceneManager.LoadScene("Level1");
     }
     public void Level2()
@@ -13,6 +12,7 @@ public class MainMenu : MonoBehaviour
     }
     public void Quit()
     {
+        Debug.Log("you quit the game but application.quit dont work");
         Application.Quit();
     }
 }

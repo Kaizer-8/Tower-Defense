@@ -17,13 +17,15 @@ public class MoveAlongSpline : MonoBehaviour
 
         Vector3 currentPosition = Spline.EvaluatePosition(DistancePercentage);//checks where on the spline the object is.
         transform.position = currentPosition;
-
         if(DistancePercentage > 1f)
         {
+            UIchanger.instance.AddLives();
             DistancePercentage = 0f;
         }
         Vector3 Nextposition = Spline.EvaluatePosition(DistancePercentage + 0.05f);
         Vector3 Direction = Nextposition - currentPosition;
         transform.rotation = Quaternion.LookRotation(Direction, transform.up);
     }
+
 }
+
