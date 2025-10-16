@@ -121,7 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0680d71554114644a8ca16095fc68d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 0}
-  Tower: {fileID: 0}
+  Projectile: {fileID: 8491126649138687442, guid: 5e3c65d7f5e9cc947a820144bf934bdd, type: 3}
+  Tower: {fileID: 1415415710456387472}
   fireRate: 1
-  range: 5
+  range: 20
+  towerDamage: 3
