@@ -26,7 +26,7 @@ public class TowerBehavior : MonoBehaviour
 
     public void TowerUpgrade(int damageAmountForUpgrade)
     {
-         towerDamage += damageAmountForUpgrade;
+        towerDamage += damageAmountForUpgrade;
     }
     public void RangeUpgrade(int RangeAmountForUpgrade)
     {

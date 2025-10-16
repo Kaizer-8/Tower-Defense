@@ -123,3 +123,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   radius: 1
+  damage: 2
