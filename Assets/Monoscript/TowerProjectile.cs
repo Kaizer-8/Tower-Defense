@@ -20,6 +20,7 @@ public class TowerProjectile : MonoBehaviour
     {
         if (!Enemy1)
         {
+            Destroy(gameObject);
             return;
         }
 
@@ -45,7 +46,6 @@ public class TowerProjectile : MonoBehaviour
 
     public static TowerProjectile Spawn(GameObject Projectile, Vector3 position, Quaternion rotation, Transform target, int damageAmount)
     {
-        
         GameObject go = Instantiate(Projectile, position, rotation);
         TowerProjectile p = go.GetComponent<TowerProjectile>();
 

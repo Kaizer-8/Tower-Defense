@@ -3,9 +3,10 @@ using TMPro; // For UI text
 using UnityEngine;
 using UnityEngine.UI; // For the button
 using UnityEngine.Splines; // Needed for SplineContainer
-
+using UnityEngine.SceneManagement;
 public class WaveSpawner : MonoBehaviour
 {
+    [SerializeField] GameObject YouWinScreen;
     [System.Serializable]
     public class Wave
     {
@@ -120,9 +121,18 @@ public class WaveSpawner : MonoBehaviour
     }
     void WinningCondition()
     {
-        if (currentWaveIndex == 5)
+        if (currentWaveIndex >= waves.Length && !spawningWave && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
-            Debug.Log("You won!");
+            StartCoroutine(HandleWinSequence());
         }
+    }
+    IEnumerator HandleWinSequence()
+    {
+        YouWinScreen.GetComponent<Canvas>().enabled = true;
+        Debug.Log("You won!");
+
+        yield return new WaitForSeconds(3f);
+
+        SceneManager.LoadScene("Main menu");
     }
 }
